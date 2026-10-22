@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENERGY EFFICIENT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 950: '#022c22' }, cyan: { 400: '#22d3ee', 500: '#06b6d4' } },
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #030712; color: #f3f4f6; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .glow-text { text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+        .bg-grid { background-size: 30px 30px; background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px); }
+        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        .animate-shimmer { animation: shimmer 2.5s infinite linear; }
+    </style>
+</head>
+<body class="bg-grid min-h-screen flex flex-col justify-between p-3 md:p-6">
+    <!-- Main Wrapper -->
+    <div class="max-w-5xl mx-auto w-full space-y-4">
+        <!-- Header -->
+        <header class="glass rounded-2xl p-4 flex items-center justify-between border-emerald-500/30">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-400 p-0.5">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="zap" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black font-mono tracking-wider bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">ENERGY EFFICIENT</h1>
+                    <p class="text-[10px] text-slate-400">Green Bitcoin Ecosystem & Target Countdown</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-xs font-mono">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-emerald-400 hidden sm:inline">91.8% Clean Energy</span>
+            </div>
+        </header>
+
+        <!-- Target Countdown Hero Section -->
+        <section class="glass rounded-2xl p-5 relative overflow-hidden border-emerald-500/30">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <span class="text-[11px] font-mono text-emerald-400 font-bold uppercase tracking-wider">Estimated Time to Last BTC (~Year 2140)</span>
+                    <h2 class="text-lg font-bold text-white mt-1">Final Block #6,930,000 Countdown</h2>
+                </div>
+                <div class="grid grid-cols-6 gap-2 text-center font-mono w-full md:w-auto">
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-y" class="text-lg font-extrabold text-emerald-400 glow-text block">113</span><span class="text-[9px] text-slate-400">YRS</span></div>
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-m" class="text-lg font-extrabold text-slate-200 block">06</span><span class="text-[9px] text-slate-400">MON</span></div>
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-d" class="text-lg font-extrabold text-slate-200 block">18</span><span class="text-[9px] text-slate-400">DAY</span></div>
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-h" class="text-lg font-extrabold text-cyan-400 block">14</span><span class="text-[9px] text-slate-400">HRS</span></div>
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-min" class="text-lg font-extrabold text-slate-200 block">42</span><span class="text-[9px] text-slate-400">MIN</span></div>
+                    <div class="bg-slate-900/80 p-2 rounded-lg border border-slate-800"><span id="cd-s" class="text-lg font-extrabold text-emerald-400 block">09</span><span class="text-[9px] text-slate-400">SEC</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supply Tracker Progress Bar -->
+        <section class="glass rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between text-sm">
+                <span class="font-bold flex items-center gap-1.5"><i data-lucide="coins" class="w-4 h-4 text-amber-400"></i> Supply Progress (21M Cap)</span>
+                <span id="minedPct" class="font-mono font-bold text-emerald-400 glow-text">94.1284%</span>
+            </div>
+            <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 rounded-full transition-all duration-300 relative" style="width: 94.1284%;">
+                    <div class="absolute inset-0 bg-white/20 animate-shimmer"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-xs font-mono pt-1">
+                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80">
+                    <span class="text-slate-400 text-[10px] block">Mined Supply</span>
+                    <span id="minedAmount" class="font-bold text-slate-200 text-sm">19,766,964.82</span> BTC
+                </div>
+                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80">
+                    <span class="text-slate-400 text-[10px] block">Remaining to Mine</span>
+                    <span id="remAmount" class="font-bold text-cyan-400 text-sm">1,233,035.18</span> BTC
+                </div>
+            </div>
+        </section>
+
+        <!-- Animated Eco Mining Stream -->
+        <section class="glass rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm flex items-center gap-1.5"><i data-lucide="boxes" class="w-4 h-4 text-emerald-400"></i> Live Mining Visualizer</h3>
+                    <p class="text-[11px] text-slate-400">Green Hash Verification Stream & Renewable Energy Metric</p>
+                </div>
+                <button id="mineBtn" class="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono text-xs font-semibold rounded-lg shadow-lg transition-all flex items-center gap-1">
+                    <i data-lucide="pickaxe" class="w-3.5 h-3.5"></i> Mine Block
+                </button>
+            </div>
+            <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800/80 overflow-x-auto">
+                <div id="blockPipeline" class="flex gap-3 min-w-max"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Dialog -->
+    <div id="blockModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass bg-slate-900 rounded-2xl max-w-sm w-full p-5 space-y-4 border-emerald-500/40 relative">
+            <button id="closeModal" class="absolute top-3 right-3 text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+            <h3 id="modalHeight" class="font-mono font-bold text-emerald-400 text-base">Block #885241</h3>
+            <div class="space-y-2 text-xs font-mono">
+                <div><span class="text-slate-400 block text-[10px]">Hash:</span><span id="modalHash" class="text-slate-200 break-all bg-slate-950 p-2 rounded block">0000...</span></div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-slate-950 p-2 rounded"><span class="text-slate-400 block text-[10px]">Reward</span><span id="modalReward" class="text-emerald-400 font-bold">3.125 BTC</span></div>
+                    <div class="bg-slate-950 p-2 rounded"><span class="text-slate-400 block text-[10px]">Renewable</span><span id="modalRenewable" class="text-cyan-400 font-bold">99.8%</span></div>
+                    <div class="bg-slate-950 p-2 rounded"><span class="text-slate-400 block text-[10px]">Efficiency</span><span id="modalEfficiency" class="text-slate-200 font-bold">14.2 J/TH</span></div>
+                    <div class="bg-slate-950 p-2 rounded"><span class="text-slate-400 block text-[10px]">Miner</span><span id="modalMiner" class="text-slate-200 font-bold">HydroPool</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const MAX = 21000000, TARGET = new Date('2140-05-08T00:00:00Z');
+        let blockHeight = 885241, minedSupply = 19766964.8210, reward = 3.125;
+        let blocks = [
+            { height: 885241, hash: '00000000000000000002b8f3a9e1c2d', miner: 'HydroPool Green', renewable: 99.8, eff: '14.2 J/TH' },
+            { height: 885240, hash: '00000000000000000001f4c7d8e2a1b', miner: 'Geothermal El Sal', renewable: 99.2, eff: '15.1 J/TH' },
+            { height: 885239, hash: '00000000000000000003e911a2b3c4d', miner: 'Nordic Clean Hash', renewable: 100.0, eff: '13.8 J/TH' }
+        ];
+
+        function updateCountdown() {
+            const diff = TARGET.getTime() - new Date().getTime();
+            if (diff <= 0) return;
+            const sec = Math.floor(diff / 1000) % 60, min = Math.floor(diff / 60000) % 60, hrs = Math.floor(diff / 3600000) % 24;
+            const daysTot = Math.floor(diff / 86400000), yrs = Math.floor(daysTot / 365.25), remDays = Math.floor(daysTot % 365.25);
+            const mon = Math.floor(remDays / 30.4375), days = Math.floor(remDays % 30.4375);
+            
+            document.getElementById('cd-y').innerText = String(yrs).padStart(2, '0');
+            document.getElementById('cd-m').innerText = String(mon).padStart(2, '0');
+            document.getElementById('cd-d').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-h').innerText = String(hrs).padStart(2, '0');
+            document.getElementById('cd-min').innerText = String(min).padStart(2, '0');
+            document.getElementById('cd-s').innerText = String(sec).padStart(2, '0');
+        }
+
+        function updateSupply() {
+            minedSupply += 0.00000035;
+            const rem = MAX - minedSupply, pct = (minedSupply / MAX) * 100;
+            document.getElementById('minedAmount').innerText = minedSupply.toLocaleString('en-US', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+            document.getElementById('remAmount').innerText = rem.toLocaleString('en-US', {minimumFractionDigits: 4, maximumFractionDigits: 4});
+            document.getElementById('minedPct').innerText = pct.toFixed(4) + '%';
+            document.getElementById('progressBar').style.width = pct.toFixed(4) + '%';
+        }
+
+        function renderPipeline() {
+            const pipe = document.getElementById('blockPipeline');
+            pipe.innerHTML = '';
+            blocks.forEach((b, i) => {
+                const el = document.createElement('div');
+                el.className = `p-3 rounded-xl border font-mono cursor-pointer transition-all hover:scale-105 ${i === 0 ? 'border-emerald-400 bg-emerald-950/40' : 'border-slate-800 bg-slate-900/60'}`;
+                el.onclick = () => openModal(b);
+                el.innerHTML = `
+                    <div class="flex items-center justify-between gap-4 mb-1">
+                        <span class="text-xs font-bold text-emerald-400">#${b.height}</span>
+                        ${i === 0 ? '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>' : ''}
+                    </div>
+                    <div class="text-[10px] text-slate-300">${b.hash.substring(0, 14)}...</div>
+                    <div class="text-[10px] text-cyan-400 mt-2 flex justify-between gap-3">
+                        <span>⚡ ${b.renewable}%</span><span>${b.eff}</span>
+                    </div>`;
+                pipe.appendChild(el);
+            });
+        }
+
+        function mineBlock() {
+            blockHeight++; minedSupply += reward;
+            const pools = ['HydroPool', 'Nordic Clean', 'Solar Flare', 'Geothermal El Sal'];
+            const newBlock = {
+                height: blockHeight,
+                hash: '0000000000000000000' + Math.random().toString(16).substring(2, 12),
+                miner: pools[Math.floor(Math.random() * pools.length)],
+                renewable: +(95 + Math.random() * 5).toFixed(1),
+                eff: +(13 + Math.random() * 2).toFixed(1) + ' J/TH'
+            };
+            blocks.unshift(newBlock);
+            if (blocks.length > 5) blocks.pop();
+            renderPipeline();
+            try { confetti({ particleCount: 20, spread: 50, origin: { y: 0.8 }, colors: ['#10b981', '#22d3ee'] }); } catch(e){}
+        }
+
+        function openModal(b) {
+            document.getElementById('modalHeight').innerText = 'Block #' + b.height;
+            document.getElementById('modalHash').innerText = b.hash;
+            document.getElementById('modalMiner').innerText = b.miner;
+            document.getElementById('modalRenewable').innerText = b.renewable + '%';
+            document.getElementById('modalEfficiency').innerText = b.eff;
+            const m = document.getElementById('blockModal');
+            m.classList.remove('hidden'); setTimeout(() => m.classList.remove('opacity-0'), 10);
+        }
+
+        document.getElementById('closeModal').onclick = () => {
+            const m = document.getElementById('blockModal');
+            m.classList.add('opacity-0'); setTimeout(() => m.classList.add('hidden'), 300);
+        };
+        document.getElementById('mineBtn').onclick = mineBlock;
+
+        setInterval(updateCountdown, 1000);
+        setInterval(updateSupply, 100);
+        setInterval(() => { if (Math.random() > 0.4) mineBlock(); }, 12000);
+        renderPipeline(); updateCountdown();
+    </script>
+</body>
+</html>
